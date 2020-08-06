@@ -19,16 +19,16 @@ echo "Please enter profile to be used: "
 read profile
 
 # Creating csv file sceleton
-echo "Creating csv file $profile.csv in nome folder"
-touch ~./$profile.csv
-echo eipallocation-id,scope,ip-address,provider >  ~./$profile.csv
+echo "Creating csv file $profile.csv in home folder"
+touch ~/$profile.csv
+echo eipallocation-id,scope,ip-address,provider >  ~/$profile.csv
 
 # Getting enabled regions from aws ec2 describe-regions
 # Cleaning up output to region and scanning for EIPs without associated ENIs
 
 for n in $(aws ec2 describe-regions --profile $profile --region us-east-1|grep RegionName|awk -F ':' '{print $2}' \
   |sed 's/[",]//g');do (echo $n':,-,-,-' &&  aws ec2 describe-addresses --profile latam-legacy  --region $n --output text && echo '' )\
-  |grep -v TAGS|grep -v eni|sed 's/\s\+/,/g'|sed 's/ADDRESSES,//' >>  ~./$profile.csv;done
+  |grep -v TAGS|grep -v eni|sed 's/\s\+/,/g'|sed 's/ADDRESSES,//' >>  ~/$profile.csv;done
   
-# Final words, csv output is avaible at ~./$profile.csv
-echo "CSV file is available at ~./$profile.csv"
+# Final words, csv output is avaible at ~/$profile.csv
+echo "CSV file is available at ~/$profile.csv"
