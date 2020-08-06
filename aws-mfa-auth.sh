@@ -51,6 +51,6 @@ echo `cat ./mfa.tmp |grep SessionToken|sed 's/"//g'|sed 's/,//'|sed 's/:/=/'|sed
 echo "Added new profile $roleprofile"
 echo
 echo "Now you can use aws cli with assumed role using --profile $roleprofile"
-echo "Assumed role is `cat ./mfa/tmp |grep Arn`"
+echo "Assumed role is `cat ./mfa.tmp |grep Arn`"
 echo "Please do not forget to delete profiles once you complete your session"
 rm -f ./mfa.tmp
