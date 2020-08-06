@@ -27,7 +27,7 @@ echo eipallocation-id,scope,ip-address,provider >  ~/$profile.csv
 # Cleaning up output to region and scanning for EIPs without associated ENIs
 
 for n in $(aws ec2 describe-regions --profile $profile --region us-east-1|grep RegionName|awk -F ':' '{print $2}' \
-  |sed 's/[",]//g');do (echo $n':,-,-,-' &&  aws ec2 describe-addresses --profile latam-legacy  --region $n --output text && echo '' )\
+  |sed 's/[",]//g');do (echo $n':,-,-,-' &&  aws ec2 describe-addresses --profile $profile  --region $n --output text && echo '' )\
   |grep -v TAGS|grep -v eni|sed 's/\s\+/,/g'|sed 's/ADDRESSES,//' >>  ~/$profile.csv;done
   
 # Final words, csv output is avaible at ~/$profile.csv
