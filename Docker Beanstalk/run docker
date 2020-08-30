@@ -1,0 +1,18 @@
+Image is based on Ubuntu LTS latest 20.04 LTS
+Build Docker image assuming your are in folder with downloaded Dockerfile
+docker build -t ubuntu:ebcli .
+
+
+To start Docker container when using - e.g you plan to build Docker application 
+eb local run
+you need to start container attached to docker service socket on host
+docker  run -v /var/run/docker.sock:/var/run/docker.sock -it  ubuntu:ebcli
+
+optionaly you can mount ~/.aws/:/root/aws
+docker  run -v /var/run/docker.sock:/var/run/docker.sock -v ~/.aws/:/root/aws/ -it  ubuntu:ebcli
+
+expose SSH port, if you plan to ssh to container
+docker  run -v /var/run/docker.sock:/var/run/docker.sock -it -p 2022:22 ubuntu:ebcli
+
+you can also mount your home subfolder with project
+docker  run -v /var/run/docker.sock:/var/run/docker.sock -v ~/beanstalk:/root/beanstalk -it ubuntu:ebcli
