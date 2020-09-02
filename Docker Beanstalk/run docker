@@ -8,8 +8,8 @@ eb local run
 you need to start container attached to docker service socket on host
 docker  run -v /var/run/docker.sock:/var/run/docker.sock -it  ubuntu:ebcli
 
-optionaly you can mount ~/.aws/:/root/aws
-docker  run -v /var/run/docker.sock:/var/run/docker.sock -v ~/.aws/:/root/aws/ -it  ubuntu:ebcli
+optionaly you can mount ~/.aws/:/root/.aws
+docker  run -v /var/run/docker.sock:/var/run/docker.sock -v ~/.aws/:/root/.aws/ -it  ubuntu:ebcli
 
 expose SSH port, if you plan to ssh to container
 docker  run -v /var/run/docker.sock:/var/run/docker.sock -it -p 2022:22 ubuntu:ebcli
