@@ -1,4 +1,16 @@
 #/bin/bash
+# -----section copyright-----
+#Copyright VirtIOGroove 2020
+# Feel free to distribute and modify script.
+#Please keep original copyright and author
+#
+# Author John Gakhokidze
+# Last update 08/05/2020
+#-----end section copyright-----
+#
+# Script allows you get tags from any supported resource tag
+# version 0.1
+# TODO Error handling
 #Profile to use
 echo Please enter profile to use
 read profile
