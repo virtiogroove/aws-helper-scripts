@@ -1,0 +1,15 @@
+Image is based on Ubuntu LTS latest 20.04 LTS
+Build Docker image assuming your are in folder with downloaded Dockerfile
+docker build -t ubuntu:chalice .
+
+
+To start Docker container 
+
+optionaly you can mount ~/.aws/:/root/.aws
+docker  run   -v ~/.aws/:/root/.aws/ -it  ubuntu:chalice
+
+expose SSH port, if you plan to ssh to container
+docker  run  -it -p 2022:22 ubuntu:ebcli
+
+you can also mount your home subfolder with project
+docker run -v ~/.aws/:/root/.aws/ -v ~/chalice:/root/chalice -it ubuntu:chalice
