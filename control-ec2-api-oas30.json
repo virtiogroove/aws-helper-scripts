@@ -1,0 +1,97 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "control-ec2",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.execute-api.us-west-2.amazonaws.com/{basePath}",
+      "variables": {
+        "basePath": {
+          "default": "/api"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/stop/{name}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "my_auth": []
+          }
+        ]
+      }
+    },
+    "/start/{name}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "my_auth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Empty": {
+        "title": "Empty Schema",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "my_auth": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header",
+        "x-amazon-apigateway-authtype": "custom"
+      }
+    }
+  }
+}
