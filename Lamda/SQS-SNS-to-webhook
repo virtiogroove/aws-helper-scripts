@@ -7,6 +7,10 @@ def lambda_handler(event, context):
     if (event['Records'][0]['eventSource'] == 'aws:sqs'):
         msg = {"Text": event['Records'][0]['body']}
     else:    
+#replace conditions here explicitly checking for eventSource aws
+#if you need more logic
+#'EventSource': 'aws:sns' like
+# elesif (event['Records'][0]['eventSource'] == 'aws:sns'):
         msg = {
             "text": event['Records'][0]['Sns']['Message']
         }
