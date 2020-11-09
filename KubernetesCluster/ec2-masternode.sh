@@ -43,7 +43,7 @@ kubectl --kubeconfig /root/.kube/config apply -f /root/calico.yaml
 #kubeadm token create --print-join-command >clusterjoin.sh
 
 #Uncomment the next line if you need to run pods on master node
-#kubectl taint node --all node-role.kubernetes.io/master:NoSchedule-
+#kubectl --kubeconfig /root/.kube/config taint node --all node-role.kubernetes.io/master:NoSchedule-
 
 #Uncomment bellow lines if you need to install help
 #curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
